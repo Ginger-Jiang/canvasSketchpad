@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <style>
+      body {
+        margin: 0;
+      }
+      #canvas {
+        background-color: green;
+      }
+      section {
+        position: fixed;
+        top: 0;
+        left: 0;
+      }
+      button {
+        padding: 5px;
+        border-radius: 10px;
+        margin: 20px;
+      }
+      .actions #brush {
+        display: none;
+      }
+      .actions.x #eraser {
+        display: none;
+      }
+      .actions.x #brush {
+        display: inline-block;
+      }
+    </style>
+    <title>canvas初探</title>
+  </head>
+  <body>
+    <canvas id="canvas" width="300" height="300"></canvas>
+    <section id="actions" class="actions">
+      <button id="eraser">橡皮擦</button>
+      <button id="brush">画笔</button>
+    </section>
+    <script>
+      //
+      var canvas = document.getElementById('canvas')
+      var ctx = canvas.getContext('2d')
+
+      autoSetCanvasSize(canvas)
+      listenToMouse(canvas)
+
+      function drawLine(oldX, oldY, newX, newY) {
+        ctx.lineWidth = 10
+        ctx.beginPath()
+        ctx.moveTo(oldX, oldY)
+        ctx.lineTo(newX, newY)
+        ctx.closePath()
+        ctx.stroke()
+        ctx.closePath()
+      }
+
+      // 橡皮擦
+      var eraserEnable = false
+      var actions = document.getElementById('actions')
+      var eraser = document.getElementById('eraser')
+      var brush = document.getElementById('brush')
+      eraser.onclick = function() {
+        eraserEnable = true
+        actions.className = 'actions x'
+      }
+      brush.onclick = function() {
+        eraserEnable = false
+        actions.className = 'actions'
+      }
+      // 自动设置canvas大小
+      function autoSetCanvasSize(canvas) {
+        setCanvasSize()
+
+        function setCanvasSize() {
+          canvas.width = document.documentElement.clientWidth
+          canvas.height = document.documentElement.clientHeight
+        }
+
+        window.onresize = function() {
+          setCanvasSize()
+        }
+      }
+
+      // 监听鼠标动作
+      function listenToMouse(canvas) {
+        var flag = false
+        var coordinate
+        canvas.onmousedown = function(e) {
+          var x = e.clientX
+          var y = e.clientY
+          flag = true
+          if (eraserEnable) {
+            ctx.clearRect(x - 10, y - 10, 20, 20)
+          } else {
+            coordinate = {
+              x,
+              y
+            }
+          }
+        }
+
+        canvas.onmousemove = function(e) {
+          var x = e.clientX
+          var y = e.clientY
+          if (!flag) return
+          if (eraserEnable) {
+            ctx.clearRect(x - 10, y - 10, 20, 20)
+          } else {
+            var newCoordinate = {
+              x,
+              y
+            }
+            drawLine(
+              coordinate.x,
+              coordinate.y,
+              newCoordinate.x,
+              newCoordinate.y
+            )
+            coordinate = newCoordinate
+          }
+        }
+
+        canvas.onmouseup = function(e) {
+          flag = false
+        }
+      }
+    </script>
+  </body>
+</html>

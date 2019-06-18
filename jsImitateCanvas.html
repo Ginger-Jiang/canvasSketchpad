@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      #canvas {
+        background-color: green;
+        position: relative;
+        height: 100vh;
+      }
+    </style>
+    <title>canvas for js</title>
+  </head>
+  <body>
+    <div id="canvas"></div>
+    <script>
+      var canvasDiv = document.getElementById('canvas')
+      var flag = false
+      canvasDiv.onmousedown = function(e) {
+        flag = true
+        var x = e.clientX
+        var y = e.clientY
+        var brush = document.createElement('div')
+        brush.style =
+          'width:6px;height:6px;background:#000;position:absolute;left:' +
+          (x - 3) +
+          'px;top:' +
+          (y - 3) +
+          'px;border-radius:3px;'
+        canvasDiv.appendChild(brush)
+      }
+      canvasDiv.onmousemove = function(e) {
+        if (flag) {
+          var x = e.clientX
+          var y = e.clientY
+          var brush = document.createElement('div')
+          brush.style =
+            'width:6px;height:6px;background:#000;position:absolute;left:' +
+            (x - 3) +
+            'px;top:' +
+            (y - 3) +
+            'px;border-radius:3px;'
+          canvasDiv.appendChild(brush)
+        }
+      }
+      canvasDiv.onmouseup = function(e) {
+        flag = false
+      }
+    </script>
+  </body>
+</html>
