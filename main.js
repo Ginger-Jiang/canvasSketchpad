@@ -17,6 +17,7 @@ function drawLine (oldX, oldY, newX, newY) {
   ctx.closePath()
 }
 
+
 // 颜色选择器
 var red = findElement('red')
 var green = findElement('green')
@@ -38,6 +39,18 @@ blue.onclick = function () {
   red.classList.remove('active')
   green.classList.remove('active')
   blue.classList.add('active')
+}
+
+// 保存图片
+var download = findElement('download')
+download.onclick = function () {
+  var downloadUrl = canvas.toDataURL("image/png")
+  var downloadA = document.createElement('a')
+  document.body.appendChild(downloadA)
+  downloadA.href = downloadUrl
+  downloadA.download = 'Drawing'
+  downloadA.target = '_blank'
+  downloadA.click()
 }
 
 // 一键重置画板
