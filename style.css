@@ -1,0 +1,27 @@
+body {
+  margin: 0;
+  overflow: hidden;
+}
+#canvas {
+  display: block;
+  background-color: green;
+}
+section {
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+button {
+  padding: 5px;
+  border-radius: 10px;
+  margin: 20px;
+}
+.actions #brush {
+  display: none;
+}
+.actions.x #eraser {
+  display: none;
+}
+.actions.x #brush {
+  display: inline-block;
+}
