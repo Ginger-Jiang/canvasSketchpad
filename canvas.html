@@ -5,11 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link rel="stylesheet" href="style.css" />
-    <title>canvas初探</title>
+    <title>canvas初探画板</title>
   </head>
   <body>
     <canvas id="canvas" width="300" height="300"></canvas>
-    <section id="actions" class="actions">
+
+    <!-- 画笔与橡皮擦 -->
+    <section id="eraserAndBrush" class="actions">
       <svg class="" id="eraser">
         <use xlink:href="#icon-xiangpica"></use>
       </svg>
@@ -18,6 +20,7 @@
       </svg>
     </section>
 
+    <!-- 颜色选择器 -->
     <section id="color">
       <ol>
         <li id="red"></li>
@@ -25,7 +28,14 @@
         <li id="blue"></li>
       </ol>
     </section>
+
+    <!-- 一键清空画布 -->
+    <section id="reset">
+      <svg class="active">
+        <use xlink:href="#icon-chaxun-zhongzhi"></use>
+      </svg>
+    </section>
     <script src="./main.js"></script>
-    <script src="//at.alicdn.com/t/font_1250251_t3gv140lsel.js"></script>
+    <script src="//at.alicdn.com/t/font_1250251_qm941cmnqd8.js"></script>
   </body>
 </html>

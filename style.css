@@ -20,23 +20,26 @@ body {
 #canvas {
   display: block;
 }
-#actions {
+
+/* 画笔与橡皮擦 */
+#eraserAndBrush {
   position: fixed;
   top: 0;
   left: 0;
   padding: 20px;
 }
-#actions > svg {
+#eraserAndBrush > svg {
   width: 1.5rem;
   height: 1.5rem;
   margin: 0 10px;
   transition: all 0.3s;
 }
-#actions > svg.active {
+#eraserAndBrush > svg.active {
   fill: red;
   transform: scale(1.2);
 }
 
+/* 颜色选择器 */
 #color {
   position: fixed;
   top: 60px;
@@ -49,8 +52,8 @@ body {
   border-radius: 50%;
   /* transition: all .3s; */
 }
-#color li.active{
-  transform: scale(1.2)
+#color li.active {
+  transform: scale(1.2);
 }
 
 #color #red {
@@ -61,4 +64,17 @@ body {
 }
 #color #blue {
   background-color: blue;
+}
+
+/* 重置画板 */
+#reset {
+  padding: 20px;
+  position: fixed;
+  top: 0;
+  right: 0;
+}
+#reset svg {
+  width: 1.5rem;
+  height: 1.5rem;
+  margin: 0 10px;
 }

@@ -21,23 +21,29 @@ function drawLine (oldX, oldY, newX, newY) {
 var red = findElement('red')
 var green = findElement('green')
 var blue = findElement('blue')
-red.onclick = function(){
+red.onclick = function () {
   ctx.strokeStyle = 'red'
   red.classList.add('active')
   green.classList.remove('active')
   blue.classList.remove('active')
 }
-green.onclick = function(){
+green.onclick = function () {
   ctx.strokeStyle = 'green'
   red.classList.remove('active')
   green.classList.add('active')
   blue.classList.remove('active')
 }
-blue.onclick = function(){
+blue.onclick = function () {
   ctx.strokeStyle = 'blue'
   red.classList.remove('active')
   green.classList.remove('active')
   blue.classList.add('active')
+}
+
+// 一键重置画板
+var reset = findElement('reset')
+reset.onclick = function () {
+  ctx.clearRect(0, 0, canvas.width, canvas.height)
 }
 
 
