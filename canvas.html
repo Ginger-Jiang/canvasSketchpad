@@ -10,9 +10,22 @@
   <body>
     <canvas id="canvas" width="300" height="300"></canvas>
     <section id="actions" class="actions">
-      <button id="eraser">橡皮擦</button>
-      <button id="brush">画笔</button>
+      <svg class="" id="eraser">
+        <use xlink:href="#icon-xiangpica"></use>
+      </svg>
+      <svg class="active" id="brush">
+        <use xlink:href="#icon-huabi"></use>
+      </svg>
+    </section>
+
+    <section id="color">
+      <ol>
+        <li id="red"></li>
+        <li id="green"></li>
+        <li id="blue"></li>
+      </ol>
     </section>
     <script src="./main.js"></script>
+    <script src="//at.alicdn.com/t/font_1250251_t3gv140lsel.js"></script>
   </body>
 </html>
